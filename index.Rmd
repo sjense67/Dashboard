@@ -1,0 +1,49 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+library(flexdashboard)
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Franchise Homeruns for New York Yankees
+
+```{r}
+query<-"SELECT yearID, HR FROM Teams WHERE teamID='NYA'"
+result<-sqldf(query)
+
+ggplot()+
+  #geom_point(data=result,aes(x=yearID,y=HR))+
+  geom_line(data=result,aes(x=yearID,y=HR))+
+  xlab("Season")+
+  ylab("Homeruns")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Franchise Homerun Distribution
+
+```{r}
+ggplot()+
+  geom_histogram(data=result,aes(x=HR),bins=20,color='white')+
+  xlab("Homeruns")+
+  ylab("Number of Seasons")
+```
+
+### Chart C
+
+```{r}
+
+```
+
