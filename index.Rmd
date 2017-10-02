@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Dashboard of Baseball Statistics"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
